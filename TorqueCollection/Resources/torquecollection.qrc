@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>TorqueCollection.qml</file>
+        <file>image/Services_48px.png</file>
+    </qresource>
+</RCC>
