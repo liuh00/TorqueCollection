@@ -4,7 +4,7 @@
 #include <logger.h>
 #include <QQmlContext>
 #include <mainwindow.h>
-
+#include <testclass.h>
 
 
 int main(int argc, char *argv[])
@@ -19,7 +19,8 @@ int main(int argc, char *argv[])
 	mainWindow.setObjectName("mainWindow");
 	mainWindow.show();
 
-	
+	TestClass test;
+	test.test();
 	app.Init();
 
 	int result= app.exec();
