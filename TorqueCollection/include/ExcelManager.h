@@ -34,5 +34,5 @@ public:
 
 
 private:
-	static void variantTovariantList(const QVariant &var, QList<QList<QVariant> > &res);
+	 void variantTovariantList(const QVariant &var, QList<QList<QVariant> > &res);
 };

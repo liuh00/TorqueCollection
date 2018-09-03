@@ -39,9 +39,6 @@
     <ClCompile Include="sources\mappliction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sources\testclass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sources\databasemanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="include\mappliction.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="include\testclass.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="include\databasemanager.h">

@@ -4,7 +4,7 @@
 #include <logger.h>
 #include <databasemanager.h>
 #include <configmanager.h>
-#include <QWidgetList>
+#include <ParameterManager.h>
 MAppliction::MAppliction(int& argc, char** argv)
 	: QApplication(argc, argv)
 {
@@ -37,20 +37,29 @@ bool MAppliction::Init()
 	result = dm.CreateDatabaseConnecttion();
 
 
+	ParameterManager &parManager = ParameterManager::instance();
+	parManager.init();
+	parManager.uploadParameterFileToDatabase("K256", "D:/K256/K256.xls", QString::fromLocal8Bit("D:/K256/QCOSÍ¼Æ¬"), "D:/K256/QCOSh.xlt");
+	
+
+	parManager.generateTemplateFile("K256");
+	QStringList imeges;
+	imeges << "QWN600b.bmp" << "QWN608.bmp" << "QWN610.bmp" << "QWN622.bmp" << "QWN722.bmp";
+
+	parManager.generateImageFile("K256", imeges);
 	return true;
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
 void MAppliction::Uninit()
 {
-
+	ParameterManager &parManager = ParameterManager::instance();
+	parManager.Uninit();
 	//¹Ø±ÕÈÕÖ¾
 	Log4Qt::Logger *logger = Log4Qt::Logger::rootLogger();
 	logger->info(QObject::tr("Appliction Uninit!"));
 	mLogMag::exitLogger();
 }
-
-
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
 void MAppliction::onSystemTrayActivat(QSystemTrayIcon::ActivationReason reason)

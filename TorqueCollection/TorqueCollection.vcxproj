@@ -131,16 +131,12 @@
     <ClCompile Include="sources\mappliction.cpp" />
     <ClCompile Include="sources\main.cpp" />
     <ClCompile Include="sources\mlogmag.cpp" />
-    <ClCompile Include="sources\testclass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="include\mlogmag.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="include\mappliction.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="include\testclass.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TorqueCollection.qml" />
