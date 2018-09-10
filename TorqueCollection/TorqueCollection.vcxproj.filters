@@ -86,15 +86,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TorqueCollection.qml" />
+    <None Include="Resources\FeatureButton.qml" />
+    <None Include="Resources\GlowStatusLed.qml" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resources\torquecollection.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
-    <QtUic Include="Resources\mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
+    <QtRcc Include="Resources\image.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>

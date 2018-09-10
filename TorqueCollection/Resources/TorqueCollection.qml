@@ -4,91 +4,84 @@ import QtQuick.Controls 2.2
 import QtQuick.VirtualKeyboard 2.3
 import QtQuick.VirtualKeyboard.Settings 2.2
 import QtQuick.Dialogs 1.2
+import QtQuick.Layouts 1.1
+import QtQuick.Controls.Material 2.4
+import QtGraphicalEffects 1.0
+
+Pane {
+    id: mywindow
+    Material.theme: Material.Light
+
+    readonly property int fontSizeExtraSmall: Qt.application.font.pixelSize * 0.8
+    readonly property int fontSizeMedium: Qt.application.font.pixelSize * 1.5
+    readonly property int fontSizeLarge: Qt.application.font.pixelSize * 2
+    readonly property int fontSizeExtraLarge: Qt.application.font.pixelSize * 5
 
 
- Rectangle {
-    id: window
-	objectName:"window"
-    visible: true
-    width: 640
-    height: 480
-    BusyIndicator {
-        id: busy
-        running: false
-        anchors.centerIn: parent
-        z: 2
-    }
- 
-    Text {
-        id: stateLabel
-        font.bold: true
-        font.pointSize: 30
-        anchors.centerIn: parent
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-        z: 3
-    }
-
-    Image {
-        id: imegeViewer
-        asynchronous: true
-        cache: false
+    MouseArea {
         anchors.fill: parent
-        fillMode: Image.PreserveAspectFit
-        onStatusChanged: {
-            if (imegeViewer.status == Image.Loading) {
-                busy.running = true
-                stateLabel.visible = false
-            }
-            if (imegeViewer.status == Image.Ready) {
-                busy.running = false
-            }
-            if (imegeViewer.status == Image.Error) {
-                busy.running = false
-                stateLabel.visible = ture
-                stateLabel.text = "错误"
+        Text {
+            id: helloText
+            text: qsTr("hello Word! View 1")
+            font.pixelSize: fontSizeLarge;
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 30
+        }
+
+        Button {
+            id: openDialog
+            text: "OPEN"
+            anchors.left: parent.left
+            anchors.top: helloText.bottom
+            anchors.leftMargin: 30
+            anchors.topMargin: 30
+            highlighted: true
+            Material.background: Material.Blue
+            onClicked: {
+                fileDialog.open()
             }
         }
-    }
+        Button {
+            id: switchBtn
+            checkable: true;
+            text: "Switch"
+            anchors.left: openDialog.right
+            anchors.leftMargin: 30
+            anchors.top: helloText.bottom
+            anchors.topMargin: 30
+            highlighted: true
+            Material.background: Material.Blue
+            onClicked: {
 
-    Text {
-        id: imagePath
-        anchors.left: openFile.right
-        anchors.leftMargin: 8
-        anchors.verticalCenter: openFile.verticalCenter
-        font.pixelSize: 18
-    }
+            }
+        }
 
-    Button {
-        id: openFile
-        text: "OPEN"
-        font.wordSpacing: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 30
-        onClicked: {
-            fileDialog.open()
+        Button {
+            id: quit
+            text: "Quit"
+            anchors.left: switchBtn.right
+            anchors.leftMargin: 30
+            anchors.top: helloText.bottom
+            anchors.topMargin: 30
+            highlighted: true
+            Material.background: Material.Blue
+            onClicked: {
+                mainWindow.closeApp()
+            }
+        }
+
+        GlowStatusLed{
+            anchors.horizontalCenter: parent.horizontalCenter;
+            anchors.verticalCenter: parent.verticalCenter;
+            active:switchBtn.checked
+        }
+
+
+        FileDialog {
+            id: fileDialog
+            title: "Please choose a file"
+            folder: shortcuts.home
         }
     }
-
-    Button {
-        text: "退出"
-        anchors.top: parent.top
-        anchors.topMargin: 30
-        anchors.right: parent.right
-        anchors.rightMargin: 20
-        onClicked: Qt.quit()
-    }
-
-		FileDialog {
-			id: fileDialog
-			title: "Open file."
-			nameFilters: ["Image Files (*.jpg *.png *.gif)"]
-			onAccepted: {
-				imegeViewer.source = fileDialog.fileUrl
-				var imageFile = new String(fileDialog.fileUrl)
-				imagePath.text = imageFile.slice(8)
-			}
-		}
 }

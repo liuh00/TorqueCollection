@@ -5,11 +5,13 @@
 #include <databasemanager.h>
 #include <configmanager.h>
 #include <ParameterManager.h>
+
+
 MAppliction::MAppliction(int& argc, char** argv)
 	: QApplication(argc, argv)
 {
-	setWindowIcon(QIcon(":/image/Services_48px.png"));
-	systemTray.setIcon(QIcon(":/image/Services_48px.png"));
+	setWindowIcon(QIcon(":/image/icon"));
+	systemTray.setIcon(QIcon(":/image/icon"));
 	systemTray.show();
 	connect(&systemTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onSystemTrayActivat(QSystemTrayIcon::ActivationReason)));
 }
@@ -24,6 +26,7 @@ MAppliction::~MAppliction()
 // ReSharper disable once CppMemberFunctionMayBeStatic
 bool MAppliction::Init()
 {
+
 	bool result = true;
 	//∆Ù∂Ø»’÷æ
 	mLogMag::initLogger(applicationDirPath(), applicationName());
@@ -39,15 +42,10 @@ bool MAppliction::Init()
 
 	ParameterManager &parManager = ParameterManager::instance();
 	parManager.init();
-	parManager.uploadParameterFileToDatabase("K256", "D:/K256/K256.xls", QString::fromLocal8Bit("D:/K256/QCOSÕº∆¨"), "D:/K256/QCOSh.xlt");
-	
 
-	parManager.generateTemplateFile("K256");
-	QStringList imeges;
-	imeges << "QWN600b.bmp" << "QWN608.bmp" << "QWN610.bmp" << "QWN622.bmp" << "QWN722.bmp";
 
-	parManager.generateImageFile("K256", imeges);
-	return true;
+
+	return result;
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic

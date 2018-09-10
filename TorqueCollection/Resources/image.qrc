@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/image">
+        <file alias="icon">image/Services_48px.png</file>
+        <file alias="navigation">image/navigation.png</file>
+    </qresource>
+</RCC>

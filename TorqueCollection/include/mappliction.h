@@ -23,5 +23,5 @@ private:
 	
 public slots:
 	void onSystemTrayActivat(QSystemTrayIcon::ActivationReason reason);
-	
+
 };
