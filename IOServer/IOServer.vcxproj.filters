@@ -29,38 +29,50 @@
     <ClCompile Include="sources\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModbusMaster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="modbusdevice.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="sources\mlogmag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mqueue.cpp">
+    <ClCompile Include="sources\modbusdevice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="readmessage.cpp">
+    <ClCompile Include="sources\ModbusMaster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\modbusreply.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\modbusrequest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\mqueue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\readmessage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ModbusMaster.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="modbusdevice.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="include\mlogmag.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="readmessage.h">
+    <QtMoc Include="include\modbusdevice.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\ModbusMaster.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\modbusreply.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\modbusrequest.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\readmessage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mqueue.h">
+    <ClInclude Include="include\mqueue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

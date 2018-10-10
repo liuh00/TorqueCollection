@@ -7,11 +7,13 @@ ReadMessage::ReadMessage(QObject* parent)
 
 ReadMessage::ReadMessage(const void* message, std::size_t size, QObject* parent) : QObject(parent)
 {
-	if(size >0)
+	this->message.clear();
+	this->size = size;
+	char * m =(char *) message;
+	for (size_t i = 0; i < size; i++)
 	{
-		this->size = size;
-		this->message = new uchar[size]();
-		memcpy(this->message, message, size);
+		this->message.append(*(m+i));
+		
 	}
 }
 

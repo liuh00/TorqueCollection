@@ -7,10 +7,7 @@ MQueue::MQueue(QObject* parent)
 
 MQueue::~MQueue()
 {
-	while(m_list.isEmpty())
-	{
-		delete m_list.takeFirst().message;
-	}
+	
 }
 
 const int MQueue::size()

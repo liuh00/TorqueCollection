@@ -9,32 +9,6 @@ class ModbusDevice : public QObject
 	Q_OBJECT
 public:
 	//Device ∂®“Â
-	enum FunctionCode
-	{
-		Invalid = 0x00,
-		ReadCoils = 0x01,
-		ReadDiscreteInputs = 0x02,
-		ReadHoldingRegisters = 0x03,
-		ReadInputRegisters = 0x04,
-		WriteSingleCoil = 0x05,
-		WriteSingleRegister = 0x06,
-		ReadExceptionStatus = 0x07,
-		Diagnostics = 0x08,
-		GetCommEventCounter = 0x0B,
-		GetCommEventLog = 0x0C,
-		WriteMultipleCoils = 0x0F,
-		WriteMultipleRegisters = 0x10,
-		ReportServerId = 0x11,
-		ReadFileRecord = 0x14,
-		WriteFileRecord = 0x15,
-		MaskWriteRegister = 0x16,
-		ReadWriteMultipleRegisters = 0x17,
-		ReadFifoQueue = 0x18,
-		EncapsulatedInterfaceTransport = 0x2B,
-		UndefinedFunctionCode = 0x100
-	};
-
-	Q_ENUM(FunctionCode)
 
 	enum State
 	{
@@ -166,15 +140,12 @@ private:
 
 	QHash<int, QVariant> m_userConnectionParams;
 
-
-
 	Q_SIGNALS:
 	void errorOccurred(ModbusDevice::Error error);
 	void stateChanged(ModbusDevice::State state);
 
 };
 
-Q_DECLARE_TYPEINFO(ModbusDevice::FunctionCode, Q_PRIMITIVE_TYPE);
 
 Q_DECLARE_TYPEINFO(ModbusDevice::State, Q_PRIMITIVE_TYPE);
 

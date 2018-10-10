@@ -16,9 +16,8 @@ ModbusMaster::ModbusMaster(QObject* parent)
 	connect(this, &ModbusMaster::readMessage, this, &ModbusMaster::on_readMessage);
 	testTimer.setInterval(2000);
 	testTimer.start();
-	
+
 	connect(&m_overseeTimer, &QTimer::timeout, this, &ModbusMaster::connectDevice);
-	
 }
 
 ModbusMaster::~ModbusMaster()
@@ -45,15 +44,13 @@ void ModbusMaster::on_readMessage()
 	{
 		rm = m_readqueue.dequeue();
 	}
-	std::string st((char *)rm.message, rm.size);
+	std::string st((char *)rm.message.data(), rm.size);
 	std::cout << st << std::endl;
-	delete rm.message;
-
 }
 
 void ModbusMaster::connectDevice()
 {
-	if(state()==State::UnconnectedState)
+	if (state() == State::UnconnectedState)
 	{
 		socketConnect();
 	}
@@ -83,18 +80,15 @@ void ModbusMaster::socketRead()
 
 void ModbusMaster::socketWite(QString eventName, std::size_t size)
 {
+	ReadMessage sm;
+	sm = m_sendqueue.dequeue();
+	if (sm.size > 0)
+	{
+		memcpy(m_sendBuff.get(),sm.message.data(), sm.size);
+	}
 	if (state() == State::ConnectedState)
 	{
-		ReadMessage sm;
-		sm = m_sendqueue.dequeue();
-		if(sm.size > 0 && sm.message !=nullptr )
-		{
-			memcpy(m_sendBuff.get(), sm.message, sm.size);
-			delete sm.message;
-			m_socket.async_send(buffer(m_sendBuff.get(), sm.size), boost::bind(&ModbusMaster::on_send, this, _1, _2, eventName.toStdString()));
-		}
-		
-		
+		m_socket.async_send(buffer(m_sendBuff.get(), sm.size), boost::bind(&ModbusMaster::on_send, this, _1, _2, eventName.toStdString()));	
 	}
 }
 
@@ -123,9 +117,9 @@ void ModbusMaster::on_read(const boost::system::error_code& ec, std::size_t sz)
 	if (ec == boost::system::errc::success)
 	{
 		logger()->info(QString("Received data:%1").arg(sz));
-		if(sz > 0)
+		if (sz > 0)
 		{
-			m_readqueue.enqueue(ReadMessage(m_readBuff.get(),sz));
+			m_readqueue.enqueue(ReadMessage(m_readBuff.get(), sz));
 			emit readMessage();
 		}
 		m_socket.async_receive(buffer(m_readBuff.get(), m_readBufferSize), boost::bind(&ModbusMaster::on_read, this, _1, _2));
@@ -156,12 +150,16 @@ void ModbusMaster::on_send(const boost::system::error_code& ec, std::size_t sz, 
 		message.append(QString::fromLocal8Bit(ec.message().c_str(), ec.message().size()));
 		logger()->error(message);
 	}
+	while (!m_sendqueue.isEmpty())
+	{
+		socketWite("Busy",1);
+	}
 }
 
 void ModbusMaster::on_timer()
 {
-	uchar * message = (uchar *)"this is a message.";
-	
+	uchar* message = (uchar *)"this is a message.";
+
 	size_t sz = strlen((char *)message);
 
 	m_sendqueue.enqueue(ReadMessage(message, sz));
@@ -170,13 +168,13 @@ void ModbusMaster::on_timer()
 
 void ModbusMaster::on_connectStatusChanged(State state)
 {
-	if((state==UnconnectedState) && m_connect)
+	if ((state == UnconnectedState) && m_connect)
 	{
 		m_overseeTimer.setInterval(3000);
-		if(!m_overseeTimer.isActive())
+		if (!m_overseeTimer.isActive())
 		{
 			m_overseeTimer.start();
-		}	
+		}
 	}
 	else
 	{

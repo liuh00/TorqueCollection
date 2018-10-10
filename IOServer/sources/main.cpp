@@ -24,11 +24,6 @@ int main(int argc, char* argv[])
 	master.setConnectionParameter(ModbusDevice::ConnectionParameter::NetworkPortParameter,502);
 	master.connectServer();
 	
-
-
-
-
-
 	//master1.setConnectionParameter(ModbusDevice::ConnectionParameter::NetworkAddressParameter, "127.0.0.1");
 	//master1.setConnectionParameter(ModbusDevice::ConnectionParameter::NetworkPortParameter, 8080);
 	

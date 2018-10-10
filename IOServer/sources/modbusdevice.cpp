@@ -3,7 +3,6 @@
 ModbusDevice::ModbusDevice(QObject* parent)
 	: QObject(parent)
 {
-	qRegisterMetaType<ModbusDevice::FunctionCode>();
 	qRegisterMetaType<ModbusDevice::State>();
 	qRegisterMetaType<ModbusDevice::Error>();
 	qRegisterMetaType<ModbusDevice::ConnectionParameter>();

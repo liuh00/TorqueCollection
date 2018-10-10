@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QObject>
+#include <QVector>
 
 class ReadMessage : public QObject
 {
@@ -10,7 +11,7 @@ public:
 	ReadMessage(const void* message, std::size_t size,QObject* parent = Q_NULLPTR);
 	~ReadMessage();
 
-	uchar* message=nullptr;
+	QVector<unsigned char> message;
 	std::size_t size=0;
 
 	ReadMessage(const ReadMessage& other);
