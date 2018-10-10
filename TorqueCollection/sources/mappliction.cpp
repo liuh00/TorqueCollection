@@ -1,5 +1,4 @@
 #include "mappliction.h"
-#include <QWidget>
 #include <mlogmag.h>
 #include <logger.h>
 #include <databasemanager.h>
@@ -10,17 +9,50 @@
 MAppliction::MAppliction(int& argc, char** argv)
 	: QApplication(argc, argv)
 {
-	setWindowIcon(QIcon(":/image/icon"));
-	systemTray.setIcon(QIcon(":/image/icon"));
+	setWindowIcon(QIcon(":/image/Services_48px.png"));
+	systemTray.setIcon(QIcon(":/image/Services_48px.png"));
 	systemTray.show();
 	connect(&systemTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(onSystemTrayActivat(QSystemTrayIcon::ActivationReason)));
+
+	mainWindow.setContextProperty("userManager", &userManager);
+	mainWindow.setContextProperty("mydata", &data);
+	mainWindow.createUI();
+	mainWindow.setObjectName("mainWindow");
+	mainWindow.show();
+
+	data.setCount(25);
+
+	test1 = new QtTest();
+	test2 = new QtTest();
+
+	thread1 = new QThread();
+	thread2 = new QThread();
+
+	connect(&data, &MyData::add, test1, &QtTest::addCount);
+	connect(&data, &MyData::add, test2, &QtTest::addCount);
+
+	test1->date = &data;
+	test2->date = &data;
+	test1->moveToThread(thread1);
+	test2->moveToThread(thread2);
+	thread1->start();
+	thread2->start();
+	qDebug()<< "Current Thread ID:" << QThread::currentThreadId();
+	test1->addCount();
+	test2->addCount();
+
+
 }
 
 MAppliction::~MAppliction()
 {
-	
-	systemTray.hide();
+	thread1->quit();
+	thread2->quit();
+	thread1->wait();
+	thread2->wait();
 
+	systemTray.hide();
+	
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
@@ -28,6 +60,7 @@ bool MAppliction::Init()
 {
 
 	bool result = true;
+
 	//∆Ù∂Ø»’÷æ
 	mLogMag::initLogger(applicationDirPath(), applicationName());
 	Log4Qt::Logger *logger = Log4Qt::Logger::rootLogger();
@@ -42,7 +75,6 @@ bool MAppliction::Init()
 
 	ParameterManager &parManager = ParameterManager::instance();
 	parManager.init();
-
 
 
 	return result;

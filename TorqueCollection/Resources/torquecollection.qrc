@@ -3,5 +3,21 @@
         <file>TorqueCollection.qml</file>
         <file>FeatureButton.qml</file>
         <file>GlowStatusLed.qml</file>
+        <file>Login.qml</file>
+        <file>CustomButton.qml</file>
+        <file>CustomLabel.qml</file>
+        <file>PageBackground.qml</file>
+        <file>SideBar.qml</file>
+        <file>demo.qml</file>
+        <file>Heating.qml</file>
+        <file>Light.qml</file>
+        <file>Security.qml</file>
+        <file>demo1.qml</file>
+        <file>CustomMeter.qml</file>
+        <file>ArcItem.qml</file>
+        <file>PieItem.qml</file>
+        <file>test.qml</file>
+        <file>LoginUserMassagePage.qml</file>
+        <file>LoginUserPage.qml</file>
     </qresource>
 </RCC>

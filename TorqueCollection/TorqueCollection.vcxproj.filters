@@ -57,6 +57,15 @@
     <ClCompile Include="sources\ParameterManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="sources\usermanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\mydata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="qttest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="include\mlogmag.h">
@@ -83,11 +92,36 @@
     <QtMoc Include="include\ParameterManager.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="include\usermanager.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="include\mydata.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="qttest.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TorqueCollection.qml" />
     <None Include="Resources\FeatureButton.qml" />
+    <None Include="Resources\Login.qml" />
+    <None Include="Resources\TorqueCollection.qml" />
     <None Include="Resources\GlowStatusLed.qml" />
+    <None Include="Resources\CustomButton.qml" />
+    <None Include="Resources\demo.qml" />
+    <None Include="Resources\CustomLabel.qml" />
+    <None Include="Resources\PageBackground.qml" />
+    <None Include="Resources\SideBar.qml" />
+    <None Include="Resources\Light.qml" />
+    <None Include="Resources\Heating.qml" />
+    <None Include="Resources\Security.qml" />
+    <None Include="Resources\test.qml" />
+    <None Include="Resources\ArcItem.qml" />
+    <None Include="Resources\PieItem.qml" />
+    <None Include="Resources\demo1.qml" />
+    <None Include="Resources\CustomMeter.qml" />
+    <None Include="Resources\LoginUserMassagePage.qml" />
+    <None Include="Resources\LoginUserPage.qml" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="Resources\torquecollection.qrc">
@@ -96,5 +130,34 @@
     <QtRcc Include="Resources\image.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\image\Services_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\navigation.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Open_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Shutdown_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Switch Off_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Switch On_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Light Off_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Light On_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\image\Maintenance_48px.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

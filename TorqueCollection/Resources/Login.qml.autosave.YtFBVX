@@ -1,0 +1,203 @@
+﻿import QtQuick 2.11
+import QtQuick.Controls 2.4
+import QtQuick.Controls.Material 2.1
+import QtQuick.Layouts 1.11
+
+Dialog {
+    id: dialog
+    width: 300
+    height: 280
+    modal: true
+    Material.theme: Material.Light
+
+    Item {
+        id: headerItem
+        height: 48
+        anchors.top: parent.top
+        anchors.topMargin: 16
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        Image {
+            id: image
+            width: 48
+            Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 32
+            source: "image/Maintenance_48px.png"
+        }
+
+        Label {
+            id: label
+            color: "#3a3a3a"
+            text: "用户登录"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: image.right
+            anchors.leftMargin: 16
+            font.pixelSize: 16
+            styleColor: "#3a3a3a"
+        }
+
+        Rectangle {
+            id: rectangle
+            height: 1
+            color: "#00000000"
+            border.width: 3
+            border.color: Material.color(Material.Grey)
+            anchors.rightMargin: 16
+            anchors.leftMargin: 16
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+        }
+    }
+
+    Item {
+        id: userItem
+        height: 40
+        anchors.top: headerItem.bottom
+        anchors.topMargin: 26
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+
+        Label {
+            id: label1
+            color: "#3a3a3a"
+            text: "用户:"
+            anchors.verticalCenter: parent.verticalCenter
+
+            wrapMode: Text.NoWrap
+
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.leftMargin: 32
+            anchors.left: parent.left
+            styleColor: "#3a3a3a"
+            font.pixelSize: 16
+        }
+
+        TextField {
+            id: textInput
+            text: qsTr("")
+            anchors.right: parent.right
+            anchors.rightMargin: 32
+            anchors.left: label1.right
+            anchors.leftMargin: 16
+            anchors.verticalCenter: parent.verticalCenter
+            bottomPadding: 0
+            topPadding: 0
+
+            horizontalAlignment: Text.AlignLeft
+            font.pixelSize: 16
+
+        }
+    }
+
+    Item {
+        id: passwordItem
+        height: 40
+        anchors.top: userItem.bottom
+        anchors.topMargin: 16
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        Label {
+            id: label2
+            color: "#3a3a3a"
+            text: "密码:"
+            anchors.verticalCenter: parent.verticalCenter
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            anchors.leftMargin: 32
+            anchors.left: parent.left
+            styleColor: "#3a3a3a"
+            font.pixelSize: 16
+        }
+
+
+
+            TextField {
+                id: textInput1
+                height: 16
+                anchors.right: parent.right
+                anchors.rightMargin: 32
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: label2.right
+                anchors.leftMargin: 16
+                bottomPadding: 0
+                topPadding: 0
+                horizontalAlignment: Text.AlignLeft
+                font.pixelSize: 16
+        }
+            Label{
+                text: "密码"
+                anchors.left: textInput1.left
+                anchors.verticalCenter: textInput1.verticalCenter
+                font.pixelSize: 16
+                visible: textInput1.text.length < 0
+            }
+    }
+
+    Button {
+        id: loginBtn
+        x: 258
+        width: 80
+        height: 48
+        text: qsTr("登录")
+        anchors.top: passwordItem.bottom
+        anchors.topMargin: 24
+        anchors.right: parent.right
+        anchors.rightMargin: 32
+        icon.height: 24
+        icon.width: 24
+        icon.source: "image/Login_48px.png"
+    }
+
+    Button {
+        id: logoutBtn
+        x: 258
+        width: 80
+        height: 48
+        text: qsTr("注销")
+        anchors.top: passwordItem.bottom
+        anchors.topMargin: 24
+        anchors.right: loginBtn.left
+        anchors.rightMargin: 16
+        icon.height: 24
+        icon.width: 24
+        icon.source: "image/Lock_48px.png"
+    }
+
+    Button {
+        id: button
+        x: 249
+        width: 24
+        height: 24
+        display: AbstractButton.IconOnly
+        padding: 0
+        anchors.top: parent.top
+        anchors.topMargin: 1
+        anchors.right: parent.right
+        anchors.rightMargin: 1
+        topPadding: 0
+        leftPadding: 0
+        rightPadding: 0
+        bottomPadding: 0
+        icon.height: 24
+        icon.width: 24
+        icon.source: "image/Close Window_48px.png"
+        onClicked: dialog.
+    }
+
+
+
+
+
+}

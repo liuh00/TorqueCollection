@@ -1,6 +1,44 @@
 <RCC>
-    <qresource prefix="/image">
-        <file alias="icon">image/Services_48px.png</file>
-        <file alias="navigation">image/navigation.png</file>
+    <qresource prefix="/">
+        <file>image/assets/arc_background_track_195_6.png</file>
+        <file>image/assets/arc_gauge_display_195_7.png</file>
+        <file>image/assets/arc_track_background_195_64.png</file>
+        <file>image/assets/backgrounds_195_610.png</file>
+        <file>image/assets/builtwithlogo_195_934.png</file>
+        <file>image/assets/dial_outside_ring_195_9.png</file>
+        <file>image/assets/gearbox_visual_1_195_187.png</file>
+        <file>image/assets/gearbox_visual_2_195_185.png</file>
+        <file>image/assets/gearbox_visual_3_195_181.png</file>
+        <file>image/assets/gearbox_visual_4_195_179.png</file>
+        <file>image/assets/gearbox_visual_5_195_162.png</file>
+        <file>image/assets/gearbox_visual_195_150.png</file>
+        <file>image/assets/iso_195_156.png</file>
+        <file>image/assets/outer_ring_195_48.png</file>
+        <file>image/assets/rpm_arc_gauge_195_68.png</file>
+        <file>image/assets/rpm_dial_195_83.png</file>
+        <file>image/assets/rpm_needle_195_65.png</file>
+        <file>image/assets/speed_dial_195_151.png</file>
+        <file>image/assets/speedometer_current_kph_arc_195_1340.png</file>
+        <file>image/assets/speedometer_needle_195_142.png</file>
+        <file>image/assets/speedometer_needle_ring_195_90.png</file>
+        <file>image/assets/speedometer_track_bg_195_87.png</file>
+        <file>image/Facebook_50px.png</file>
+        <file>image/Fast Forward_40px.png</file>
+        <file>image/Light Off_48px.png</file>
+        <file>image/Light On_48px.png</file>
+        <file>image/Maintenance_48px.png</file>
+        <file>image/navigation.png</file>
+        <file>image/Open_48px.png</file>
+        <file>image/Rewind_40px.png</file>
+        <file>image/Services_48px.png</file>
+        <file>image/Shutdown_48px.png</file>
+        <file>image/Switch Off_48px.png</file>
+        <file>image/Switch On_48px.png</file>
+        <file>image/assets/dot_0.png</file>
+        <file>image/Lock_48px.png</file>
+        <file>image/Login_48px.png</file>
+        <file>image/Name_48px.png</file>
+        <file>image/Close Window_48px.png</file>
+        <file>image/Change User_48px.png</file>
     </qresource>
 </RCC>
