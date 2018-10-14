@@ -9,11 +9,10 @@ ReadMessage::ReadMessage(const void* message, std::size_t size, QObject* parent)
 {
 	this->message.clear();
 	this->size = size;
-	char * m =(char *) message;
+	char* m = (char *) message;
 	for (size_t i = 0; i < size; i++)
 	{
-		this->message.append(*(m+i));
-		
+		this->message.append(*(m + i));
 	}
 }
 

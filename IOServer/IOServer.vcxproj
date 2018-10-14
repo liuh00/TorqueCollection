@@ -35,6 +35,9 @@
     <ClInclude Include="include\mqueue.h" />
     <QtMoc Include="include\readmessage.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="H:\data\QT\书籍\Modbus事物处理状态图.png" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C2B1F04D-4670-4E0C-85CB-3B2E38EE7A09}</ProjectGuid>
     <Keyword>Qt4VSv1.0</Keyword>

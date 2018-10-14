@@ -76,4 +76,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="H:\data\QT\书籍\Modbus事物处理状态图.png" />
+  </ItemGroup>
 </Project>

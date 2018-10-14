@@ -7,9 +7,7 @@
 
 class MQueue: public QObject
 {
-
 public:
-
 	MQueue(QObject *parent=nullptr);
 	~MQueue();
 
