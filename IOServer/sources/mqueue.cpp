@@ -7,7 +7,6 @@ MQueue::MQueue(QObject* parent)
 
 MQueue::~MQueue()
 {
-	
 }
 
 const int MQueue::size()

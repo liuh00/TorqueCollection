@@ -51,6 +51,13 @@ int main(int argc, char* argv[])
 	}
 	QVector<quint8> rs3 = req3.getPDU();
 
+
+	ModbusRequest req4;
+
+	req4 = req3;
+	QVector<quint8> rs4 = req4.getPDU();
+
+
 	int result = a.exec();
 
 	mLogMag::exitLogger();

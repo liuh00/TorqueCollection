@@ -9,7 +9,8 @@
 #include <log4qt/logger.h>
 #include <modbusdevice.h>
 #include <mqueue.h>
-
+#include <modbusrequest.h>
+#include <modbusreply.h>
 
 using namespace boost::asio;
 
@@ -22,6 +23,10 @@ public:
 	ModbusMaster(QObject* parent = nullptr);
 	~ModbusMaster();
 	void connectServer();
+	void disconnectServer();
+	
+	ModbusReply * sendRequest(ModbusRequest request);
+
 private:
 	io_service m_ioserver; //io管理器
 	io_service::work m_work; //保持ioserver运行任务
@@ -45,6 +50,11 @@ private:
 	MQueue m_readqueue;
 	MQueue m_sendqueue;
 
+	ushort m_transactionIdentifier=0;
+	QMutex m_tidMutex;
+
+
+
 private:
 	void socketConnect();
 	void socketRead();
@@ -53,6 +63,8 @@ private:
 	void on_read(const boost::system::error_code& ec, std::size_t sz);
 	void on_send(const boost::system::error_code& ec, std::size_t sz, std::string eventName);
 	void startThread();
+	void addTransactionIdentifier();
+	ushort transactionIdentifier();
 
 signals:
 	void readMessage();
@@ -60,5 +72,6 @@ protected slots:
 	void on_timer();
 	void on_connectStatusChanged(State state);
 	void connectDevice();
+	void disconnectDevice();
 	void on_readMessage();
 };

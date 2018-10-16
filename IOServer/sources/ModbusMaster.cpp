@@ -37,6 +37,17 @@ void ModbusMaster::connectServer()
 	connectDevice();
 }
 
+void ModbusMaster::disconnectServer()
+{
+	m_connect = false;
+	disconnectDevice();
+}
+
+ModbusReply* ModbusMaster::sendRequest(ModbusRequest request)
+{
+
+}
+
 void ModbusMaster::on_readMessage()
 {
 	ReadMessage rm;
@@ -54,6 +65,16 @@ void ModbusMaster::connectDevice()
 	{
 		socketConnect();
 	}
+}
+
+void ModbusMaster::disconnectDevice()
+{
+	if (m_socket.is_open())
+	{
+		m_socket.cancel();
+	}
+	m_socket.close();
+	setState(State::UnconnectedState);
 }
 
 void ModbusMaster::socketConnect()
@@ -185,4 +206,23 @@ void ModbusMaster::on_connectStatusChanged(State state)
 void ModbusMaster::startThread()
 {
 	m_ioserver.run();
+}
+
+void ModbusMaster::addTransactionIdentifier()
+{
+	QMutexLocker locker(&m_tidMutex);
+	if(m_transactionIdentifier >= 65535)
+	{
+		m_transactionIdentifier = 0;
+	}
+	else
+	{
+		++m_transactionIdentifier;
+	}
+}
+
+ushort ModbusMaster::transactionIdentifier()
+{
+	QMutexLocker locker(&m_tidMutex);
+	return m_transactionIdentifier;
 }
